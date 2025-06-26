@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Impostazione Sfondo */
+body {
+    position: relative;
+    background: none;
+    z-index: 0;
+}
+
+/* Inserisci overlay nero sopra foto */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)),
+    url('../../public/media/images/background/starSky4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -100;
+}
+
+
+/* Sfoca foto di sfondo */
+/*
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../public/media/images/background/starSky4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(0px);
+    z-index: -1;
+}
+*/
+
+/* OLD */
+/*
+body {
+    background-image: url('../../public/media/images/background/starSky4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+ */
+
+
+/* Button */
+.classic {
+    @apply inline-flex items-center px-4 py-2 bg-sky-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-sky-700 focus:bg-sky-700 active:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition ease-in-out duration-150;
+}
+
+
+/* Circles that indicate the status of the creation of campaign */
+.status {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #075985;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.status.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.status.finish {
+    background-color: #075985;
+}
+
+/* Circles that indicate the steps of the form: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #075985;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #075985;
+}
+
+/* Tooltip */
+.tooltip {
+    @apply relative inline-block cursor-pointer;
+}
+
+.tooltip .tooltiptext {
+    @apply absolute p-2 opacity-0 z-10 text-sm text-center w-40 rounded-md;
+    visibility: hidden;
+    background-color: #075985;
+    color: #fff;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    transition: opacity 0.7s;
+}
+
+.tooltip:hover .tooltiptext {
+    @apply visible opacity-100;
+}

@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+    laravel:
+        container_name: laravel
+        build:
+            dockerfile: Dockerfile
+        ports:
+            - 80:8000
+        depends_on:
+            - mysql
+        environment:
+            - LARAVEL_DATABASE_HOST=${DB_HOST}
+            - LARAVEL_DATABASE_NAME=${DB_DATABASE}
+            - LARAVEL_DATABASE_USER=${DB_USERNAME}
+            - LARAVEL_DATABASE_PASSWORD=${DB_PASSWORD}
+    mysql:
+        container_name: mysql
+        ports:
+            - 3306:3306
+        image: mysql:latest
+        volumes:
+            - mysqldata:/var/lib/mysql
+        environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=${DB_DATABASE}
+            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+    g4f:
+        container_name: g4f
+        image: hlohaus789/g4f:latest
+
+volumes:
+    mysqldata:

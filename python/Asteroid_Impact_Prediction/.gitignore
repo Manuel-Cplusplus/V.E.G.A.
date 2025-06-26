@@ -1,0 +1,6 @@
+# Ignora ambiente virtuale
+myvenv/
+
+# Ignora cache di Python
+__pycache__/
+src/__pycache__/
